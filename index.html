@@ -123,19 +123,21 @@
       <div class="photo-slot"><img src="fotos/foto1.jpeg" alt="Nossa foto 1" /></div>
       <div class="photo-slot"><img src="fotos/foto2.jpeg" alt="Nossa foto 2" /></div>
       <div class="photo-slot"><img src="fotos/foto3.jpeg" alt="Nossa foto 3" /></div>
-      <div class="photo-slot"><img src="fotos/foto4.jpeg" alt="Nossa foto 4" /></div>
       <div class="photo-slot"><img src="fotos/foto5.jpeg" alt="Nossa foto 5" /></div>
-        <div class="photo-slot"><img src="fotos/foto6.jpeg" alt="Nossa foto 6" /></div>
         <div class="photo-slot"><img src="fotos/foto7.jpeg" alt="Nossa foto 7" /></div>
         <div class="photo-slot"><img src="fotos/foto8.jpeg" alt="Nossa foto 8" /></div>
     </div>
   </section>
 
-  <!-- FOTO 4 COM TEXTO -->
+  <!-- FOTO 4 COM TEXTO E VERSÍCULO -->
   <section>
     <p class="section-label">Um momento especial</p>
     <div class="photo-slot" style="grid-column: span 3;"><img src="fotos/foto4.jpeg" alt="Nossa foto 4" /></div>
     <p class="msg-text" style="margin-top: 2rem; text-align: center;">Como é bom viver o evangelho com ela</p>
+    <div class="verse-block" style="margin-top: 2rem;">
+      <p class="verse-ref">1 Coríntios 13:4–7</p>
+      <div class="verse-text">O amor é paciente, é benigno; o amor não arde em ciúmes, não se ufana, não se ensoberbece, não se comporta com indecência, não procura os seus próprios interesses, não se irrita, não se ressente do mal; não se alegra com a injustiça, mas regozija-se com a verdade; tudo sofre, tudo crê, tudo espera, tudo suporta.</div>
+    </div>
   </section>
 
   <!-- FOTO 6 COM VERSÍCULO -->
@@ -157,16 +159,7 @@
     </div>
   </section>
 
-  <!-- VERSÍCULOS -->
-  <section>
-    <p class="section-label">Palavra de Deus</p>
 
-    <div class="verse-block">
-      <p class="verse-ref">1 Coríntios 13:4–7</p>
-      <div class="verse-text">O amor é paciente, é benigno; o amor não arde em ciúmes, não se ufana, não se ensoberbece, não se comporta com indecência, não procura os seus próprios interesses, não se irrita, não se ressente do mal; não se alegra com a injustiça, mas regozija-se com a verdade; tudo sofre, tudo crê, tudo espera, tudo suporta.</div>
-    </div>
-
-  </section>
 
   <!-- MÚSICA -->
   <section>
@@ -211,8 +204,7 @@
   <audio id="audio-el" src="musica/musica.mp3" preload="auto"></audio>
 
   <script>
-    document.getElementById('data-display').textContent =
-      new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
+    document.getElementById('data-display').textContent = "13 de junho de 2026";
 
     const audio    = document.getElementById('audio-el');
     const playIcon = document.getElementById('play-icon');
