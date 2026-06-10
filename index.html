@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Carol — 5 meses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --rose: #9c2f3a;
+      --rose-lt: #e8c8cb;
+      --rose-md: #b85c65;
+      --gold: #a8843e;
+      --gold-lt: #ede0c4;
+      --ink: #f0ebe6;
+      --ink-2: #c8bfb8;
+      --ink-3: #8a7e78;
+      --bg: #1a1410;
+      --bg-2: #231c17;
+      --bg-3: #2e2420;
+      --border: #3d3028;
+      --white: #f0ebe6;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--bg); color: var(--ink); line-height: 1.7; }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 40%, #3d1a1e 0%, transparent 70%); pointer-events: none; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--rose-md); margin-bottom: 1.5rem; position: relative; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 1.2rem; position: relative; }
+    .hero-title em { font-style: italic; color: var(--rose-md); }
+    .hero-sub { font-size: 14px; color: var(--ink-3); letter-spacing: .06em; margin-bottom: 2.5rem; position: relative; }
+    .hero-date { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: .1em; color: var(--rose-md); border: 1px solid var(--rose); padding: 8px 22px; border-radius: 40px; background: var(--bg-2); position: relative; }
+    .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 10px; letter-spacing: .15em; color: var(--ink-3); text-transform: uppercase; animation: bounce 2s infinite; }
+    .hero-scroll svg { width: 16px; height: 16px; stroke: var(--ink-3); fill: none; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
+
+    /* SECTIONS */
+    section { max-width: 720px; margin: 0 auto; padding: 5rem 2rem; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    .section-label { font-size: 10px; letter-spacing: .25em; text-transform: uppercase; color: var(--rose-md); margin-bottom: 2rem; display: flex; align-items: center; gap: 12px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* FOTOS */
+    .photos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .photo-slot { aspect-ratio: 1; border-radius: 4px; overflow: hidden; background: var(--bg-3); border: 1px solid var(--border); }
+    .photo-slot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+    .photo-slot img:hover { transform: scale(1.04); }
+
+    /* MENSAGEM */
+    .msg-card { border-left: 2px solid var(--rose); padding: 1.8rem 2rem; background: var(--bg-2); border-radius: 0 4px 4px 0; }
+    .msg-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; font-weight: 300; line-height: 1.85; color: var(--ink); white-space: pre-line; }
+    .msg-sign { margin-top: 1.5rem; font-size: 12px; letter-spacing: .12em; color: var(--ink-3); text-align: right; }
+
+    /* VERSÍCULOS */
+    .verse-block { margin-bottom: 3rem; }
+    .verse-block:last-child { margin-bottom: 0; }
+    .verse-ref { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+    .verse-ref::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: inline-block; flex-shrink: 0; }
+    .verse-text { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 300; line-height: 1.9; color: var(--ink); padding: 1.6rem 2rem 1.6rem 2.2rem; background: var(--bg-2); border-radius: 4px; border: 1px solid var(--border); position: relative; }
+    .verse-text::before { content: '\201C'; font-family: 'Cormorant Garamond', serif; font-size: 90px; color: var(--gold); opacity: .18; position: absolute; top: -14px; left: 10px; line-height: 1; pointer-events: none; }
+
+    /* PLAYER */
+    .player-wrap { background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; display: flex; flex-direction: column; gap: 16px; }
+    .player-top { display: flex; align-items: center; gap: 16px; }
+    .cover-box { width: 62px; height: 62px; border-radius: 6px; background: var(--bg-3); border: 1px solid var(--border); overflow: hidden; flex-shrink: 0; }
+    .cover-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .song-info { flex: 1; min-width: 0; }
+    .song-name { font-size: 14px; font-weight: 400; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .song-by { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+    .progress-row { display: flex; align-items: center; gap: 10px; }
+    .prog-track { flex: 1; height: 3px; background: var(--border); border-radius: 2px; cursor: pointer; position: relative; }
+    .prog-fill { height: 100%; background: var(--rose-md); border-radius: 2px; width: 0%; transition: width .4s linear; pointer-events: none; }
+    .t-label { font-size: 11px; color: var(--ink-3); min-width: 30px; }
+    .t-label.right { text-align: right; }
+    .ctrl-row { display: flex; align-items: center; justify-content: center; gap: 28px; }
+    .ctrl-btn { background: none; border: none; cursor: pointer; color: var(--ink-3); padding: 4px; display: flex; transition: color .15s; }
+    .ctrl-btn:hover { color: var(--rose-md); }
+    .ctrl-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; }
+    .play-btn { width: 46px; height: 46px; border-radius: 50%; background: var(--rose); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .15s; }
+    .play-btn:hover { background: var(--rose-md); }
+    .play-btn svg { width: 18px; height: 18px; stroke: var(--ink); fill: none; }
+
+    /* RODAPÉ */
+    footer { text-align: center; padding: 4rem 2rem; background: var(--bg-2); border-top: 1px solid var(--border); }
+    .footer-heart { font-family: 'Cormorant Garamond', serif; font-size: 52px; color: var(--rose-md); line-height: 1; margin-bottom: 1rem; }
+    .footer-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: var(--ink-3); }
+
+    @media (max-width: 480px) {
+      .photos-grid { grid-template-columns: repeat(2, 1fr); }
+      .verse-text { font-size: 16px; padding: 1.2rem 1.4rem; }
+      .hero-title { font-size: 2.8rem; }
+      .msg-text { font-size: 17px; }
+    }
+    audio { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-eyebrow">❤ 5 meses juntos</p>
+    <h1 class="hero-title">Para <em>Carol</em>,<br>meu amor</h1>
+    <p class="hero-sub">Um cantinho só nosso</p>
+    <div class="hero-date">
+      <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span id="data-display"></span>
+    </div>
+    <div class="hero-scroll">
+      <span>rolar</span>
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+
+  <!-- FOTOS -->
+  <section>
+    <p class="section-label">Nossas fotos</p>
+    <div class="photos-grid">
+      <div class="photo-slot"><img src="fotos/foto1.jpg" alt="Nossa foto 1" /></div>
+      <div class="photo-slot"><img src="fotos/foto2.jpg" alt="Nossa foto 2" /></div>
+      <div class="photo-slot"><img src="fotos/foto3.jpg" alt="Nossa foto 3" /></div>
+      <div class="photo-slot"><img src="fotos/foto4.jpg" alt="Nossa foto 4" /></div>
+      <div class="photo-slot"><img src="fotos/foto5.jpg" alt="Nossa foto 5" /></div>
+      <div class="photo-slot"><img src="fotos/foto6.jpg" alt="Nossa foto 6" /></div>
+    </div>
+  </section>
+
+  <!-- MENSAGEM -->
+  <section>
+    <p class="section-label">Uma mensagem pra você</p>
+    <div class="msg-card">
+      <p class="msg-text">Que graça a minha de partilhar a vida ao teu lado meu amor, que Jesus seja sempre o nosso guia e que possamos viver sobre a misericórdia Dele até Ele voltar, eu te amo mo</p>
+      <div class="msg-sign">— Com amor, Seu Pedro</div>
+    </div>
+  </section>
+
+  <!-- VERSÍCULOS -->
+  <section>
+    <p class="section-label">Palavra de Deus</p>
+
+    <div class="verse-block">
+      <p class="verse-ref">1 Coríntios 13:4–7</p>
+      <div class="verse-text">O amor é paciente, é benigno; o amor não arde em ciúmes, não se ufana, não se ensoberbece, não se comporta com indecência, não procura os seus próprios interesses, não se irrita, não se ressente do mal; não se alegra com a injustiça, mas regozija-se com a verdade; tudo sofre, tudo crê, tudo espera, tudo suporta.</div>
+    </div>
+
+    <div class="verse-block">
+      <p class="verse-ref">Provérbios 31:10–11</p>
+      <div class="verse-text">Mulher de caráter, quem poderá encontrá-la? O seu valor ultrapassa de longe o dos rubis. O coração do marido está nela confiante, e não lhe faltará ganho.</div>
+    </div>
+  </section>
+
+  <!-- MÚSICA -->
+  <section>
+    <p class="section-label">Nossa música</p>
+    <div class="player-wrap">
+      <div class="player-top">
+        <div class="cover-box">
+          <img src="fotos/capa.jpg" alt="capa" onerror="this.parentElement.style.background='#2e2420'" />
+        </div>
+        <div class="song-info">
+          <p class="song-name">Eu Sei Que Vou Te Amar</p>
+          <p class="song-by">Tom Jobim &amp; Vinícius de Moraes</p>
+        </div>
+      </div>
+
+      <div class="progress-row">
+        <span class="t-label" id="t-cur">0:00</span>
+        <div class="prog-track" id="prog-track"><div class="prog-fill" id="prog-fill"></div></div>
+        <span class="t-label right" id="t-dur">0:00</span>
+      </div>
+
+      <div class="ctrl-row">
+        <button class="ctrl-btn" id="btn-back" title="Reiniciar">
+          <svg viewBox="0 0 24 24"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+        </button>
+        <button class="play-btn" id="btn-play" aria-label="Play / Pause">
+          <svg id="play-icon" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+        <button class="ctrl-btn" id="btn-loop" title="Repetir">
+          <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="footer-heart">♥</div>
+    <p class="footer-text">Feito com todo amor do mundo, só pra você.</p>
+  </footer>
+
+  <audio id="audio-el" src="musica/musica.mp3" preload="auto"></audio>
+
+  <script>
+    document.getElementById('data-display').textContent =
+      new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+    const audio    = document.getElementById('audio-el');
+    const playIcon = document.getElementById('play-icon');
+    const progFill = document.getElementById('prog-fill');
+    const tCur     = document.getElementById('t-cur');
+    const tDur     = document.getElementById('t-dur');
+
+    const PLAY  = '<polygon points="5 3 19 12 5 21 5 3"/>';
+    const PAUSE = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+
+    function fmt(s) {
+      return Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+    }
+
+    document.getElementById('btn-play').addEventListener('click', () => {
+      if (audio.paused) { audio.play(); playIcon.innerHTML = PAUSE; }
+      else              { audio.pause(); playIcon.innerHTML = PLAY; }
+    });
+
+    document.getElementById('btn-back').addEventListener('click', () => {
+      audio.currentTime = 0;
+    });
+
+    let looping = false;
+    document.getElementById('btn-loop').addEventListener('click', function () {
+      looping = !looping;
+      audio.loop = looping;
+      this.style.color = looping ? '#b85c65' : '';
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (!audio.duration) return;
+      progFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      tCur.textContent = fmt(audio.currentTime);
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      tDur.textContent = fmt(audio.duration);
+    });
+
+    audio.addEventListener('ended', () => {
+      playIcon.innerHTML = PLAY;
+      progFill.style.width = '0%';
+    });
+
+    document.getElementById('prog-track').addEventListener('click', function (e) {
+      if (!audio.duration) return;
+      const r = this.getBoundingClientRect();
+      audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+    });
+  </script>
+</body>
+</html>
