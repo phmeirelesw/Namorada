@@ -28,8 +28,33 @@
     body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--bg); color: var(--ink); line-height: 1.7; }
 
     /* HERO */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 40%, #3d1a1e 0%, transparent 70%); pointer-events: none; }
+    .hero { 
+      min-height: 100vh; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
+      text-align: center; 
+      padding: 4rem 2rem; 
+      position: relative; 
+      overflow: hidden;
+      background: url('Fotos/fundo_hero.jpeg') no-repeat center center;
+      background-size: cover;
+    }
+    .hero::before { 
+      content: ''; 
+      position: absolute; 
+      inset: 0; 
+      background: rgba(0, 0, 0, 0.6); /* Escurecimento da imagem */
+      pointer-events: none; 
+    }
+    .hero::after { 
+      content: ''; 
+      position: absolute; 
+      inset: 0; 
+      background: radial-gradient(ellipse 70% 50% at 50% 40%, rgba(61, 26, 30, 0.4) 0%, transparent 70%); 
+      pointer-events: none; 
+    }
     .hero-eyebrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--rose-md); margin-bottom: 1.5rem; position: relative; }
     .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 1.2rem; position: relative; }
     .hero-title em { font-style: italic; color: var(--rose-md); }
