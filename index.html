@@ -28,33 +28,8 @@
     body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--bg); color: var(--ink); line-height: 1.7; }
 
     /* HERO */
-    .hero { 
-      min-height: 100vh; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      justify-content: center; 
-      text-align: center; 
-      padding: 4rem 2rem; 
-      position: relative; 
-      overflow: hidden;
-      background: url('./Fotos/fundo_hero.jpeg') no-repeat center center;
-      background-size: cover;
-    }
-    .hero::before { 
-      content: ''; 
-      position: absolute; 
-      inset: 0; 
-      background: rgba(0, 0, 0, 0.6); /* Escurecimento da imagem */
-      pointer-events: none; 
-    }
-    .hero::after { 
-      content: ''; 
-      position: absolute; 
-      inset: 0; 
-      background: radial-gradient(ellipse 70% 50% at 50% 40%, rgba(61, 26, 30, 0.4) 0%, transparent 70%); 
-      pointer-events: none; 
-    }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 40%, #3d1a1e 0%, transparent 70%); pointer-events: none; }
     .hero-eyebrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--rose-md); margin-bottom: 1.5rem; position: relative; }
     .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 1.2rem; position: relative; }
     .hero-title em { font-style: italic; color: var(--rose-md); }
@@ -122,6 +97,168 @@
       .msg-text { font-size: 17px; }
     }
     audio { display: none; }
+    /* QUIZ */
+    .quiz-wrap {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quiz-progress-track {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-bottom: 1.8rem;
+      overflow: hidden;
+    }
+
+    .quiz-progress-fill {
+      height: 100%;
+      width: 20%;
+      background: var(--rose);
+      border-radius: 2px;
+      transition: width .4s ease;
+    }
+
+    .quiz-counter {
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--rose-md);
+      margin-bottom: .8rem;
+    }
+
+    .quiz-question {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--ink);
+      margin-bottom: 1.6rem;
+      min-height: 64px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quiz-option {
+      text-align: left;
+      padding: 14px 18px;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--ink-2);
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, color .2s;
+    }
+
+    .quiz-option:hover:not(.disabled) {
+      border-color: var(--rose-md);
+      color: var(--ink);
+    }
+
+    .quiz-option.correct {
+      background: rgba(168, 132, 62, 0.18);
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+
+    .quiz-option.wrong {
+      background: rgba(156, 47, 58, 0.18);
+      border-color: var(--rose);
+      color: var(--ink);
+    }
+
+    .quiz-option.disabled {
+      cursor: default;
+      opacity: .55;
+    }
+
+    .quiz-feedback {
+      margin-top: 1.2rem;
+      font-size: 13px;
+      color: var(--rose-md);
+      letter-spacing: .04em;
+      min-height: 18px;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .quiz-next {
+      margin-top: 1.4rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .quiz-next button {
+      padding: 10px 26px;
+      background: var(--rose);
+      color: var(--ink);
+      border: none;
+      border-radius: 30px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .15s;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .quiz-next button.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .quiz-next button:hover {
+      background: var(--rose-md);
+    }
+
+    /* TELA FINAL */
+    .quiz-final {
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    .quiz-final-heart {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      color: var(--rose-md);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-final-score {
+      font-size: 11px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .quiz-final-msg {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+      line-height: 1.85;
+      color: var(--ink);
+      max-width: 480px;
+      margin: 0 auto;
+      white-space: pre-line;
+    }
+
+    .quiz-screen { animation: fadeQuiz .4s ease; }
+    @keyframes fadeQuiz { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
@@ -145,31 +282,26 @@
   <section>
     <p class="section-label">Nossas fotos</p>
     <div class="photos-grid">
-      <div class="photo-slot"><img src="Fotos/Foto1.jpeg" alt="Nossa foto 1" /></div>
-      <div class="photo-slot"><img src="Fotos/Foto2.jpeg" alt="Nossa foto 2" /></div>
-      <div class="photo-slot"><img src="Fotos/Foto3.jpeg" alt="Nossa foto 3" /></div>
-
-      <div class="photo-slot"><img src="Fotos/Foto5.jpeg" alt="Nossa foto 5" /></div>
-        <div class="photo-slot"><img src="Fotos/foto7.jpeg" alt="Nossa foto 7" /></div>
-        <div class="photo-slot"><img src="Fotos/foto8.jpeg" alt="Nossa foto 8" /></div>
+      <div class="photo-slot"><img src="fotos/foto1.jpeg" alt="Nossa foto 1" /></div>
+      <div class="photo-slot"><img src="fotos/foto2.jpeg" alt="Nossa foto 2" /></div>
+      <div class="photo-slot"><img src="fotos/foto3.jpeg" alt="Nossa foto 3" /></div>
+      <div class="photo-slot"><img src="fotos/foto5.jpeg" alt="Nossa foto 5" /></div>
+        <div class="photo-slot"><img src="fotos/foto7.jpeg" alt="Nossa foto 7" /></div>
+        <div class="photo-slot"><img src="fotos/foto8.jpeg" alt="Nossa foto 8" /></div>
     </div>
   </section>
 
-  <!-- FOTO 4 COM TEXTO E VERSÍCULO -->
+  <!-- FOTO 4 COM TEXTO -->
   <section>
     <p class="section-label">Um momento especial</p>
-    <div class="photo-slot" style="grid-column: span 3;"><img src="Fotos/Foto4.jpeg" alt="Nossa foto 4" /></div>
-
-    <div class="verse-block" style="margin-top: 2rem;">
-      <p class="verse-ref">1 Coríntios 13:4–7</p>
-      <div class="verse-text">O amor é paciente, é benigno; o amor não arde em ciúmes, não se ufana, não se ensoberbece, não se comporta com indecência, não procura os seus próprios interesses, não se irrita, não se ressente do mal; não se alegra com a injustiça, mas regozija-se com a verdade; tudo sofre, tudo crê, tudo espera, tudo suporta.</div>
-    </div>
+    <div class="photo-slot" style="grid-column: span 3;"><img src="fotos/foto4.jpeg" alt="Nossa foto 4" /></div>
+    <p class="msg-text" style="margin-top: 2rem; text-align: center;">Como é bom viver o evangelho com ela</p>
   </section>
 
   <!-- FOTO 6 COM VERSÍCULO -->
   <section>
     <p class="section-label">Um versículo para você</p>
-    <div class="photo-slot" style="grid-column: span 3;"><img src="Fotos/Foto6.jpeg" alt="Nossa foto 6" /></div>
+    <div class="photo-slot" style="grid-column: span 3;"><img src="fotos/foto6.jpeg" alt="Nossa foto 6" /></div>
     <div class="verse-block" style="margin-top: 2rem;">
       <p class="verse-ref">Provérbios 31:10–11</p>
       <div class="verse-text">Mulher de caráter, quem poderá encontrá-la? O seu valor ultrapassa de longe o dos rubis. O coração do marido está nela confiante, e não lhe faltará ganho.</div>
@@ -185,7 +317,16 @@
     </div>
   </section>
 
+  <!-- VERSÍCULOS -->
+  <section>
+    <p class="section-label">Palavra de Deus</p>
 
+    <div class="verse-block">
+      <p class="verse-ref">1 Coríntios 13:4–7</p>
+      <div class="verse-text">O amor é paciente, é benigno; o amor não arde em ciúmes, não se ufana, não se ensoberbece, não se comporta com indecência, não procura os seus próprios interesses, não se irrita, não se ressente do mal; não se alegra com a injustiça, mas regozija-se com a verdade; tudo sofre, tudo crê, tudo espera, tudo suporta.</div>
+    </div>
+
+  </section>
 
   <!-- MÚSICA -->
   <section>
@@ -193,7 +334,7 @@
     <div class="player-wrap">
       <div class="player-top">
         <div class="cover-box">
-          <img src="Fotos/capa_album.jpg" alt="capa" onerror="this.parentElement.style.background='#2e2420'" />
+          <img src="fotos/capa.jpeg" alt="capa" onerror="this.parentElement.style.background='#2e2420'" />
         </div>
         <div class="song-info">
           <p class="song-name">Eu Sei Que Vou Te Amar</p>
@@ -221,6 +362,35 @@
     </div>
   </section>
 
+  <!-- QUIZ -->
+  <section>
+    <p class="section-label">Quanto você nos conhece?</p>
+    <div class="quiz-wrap" id="quiz-wrap">
+
+      <!-- TELA DO QUIZ -->
+      <div id="quiz-game">
+        <div class="quiz-progress-track">
+          <div class="quiz-progress-fill" id="quiz-progress"></div>
+        </div>
+        <p class="quiz-counter" id="quiz-counter">Pergunta 1 de 4</p>
+        <p class="quiz-question" id="quiz-question"></p>
+        <div class="quiz-options" id="quiz-options"></div>
+        <p class="quiz-feedback" id="quiz-feedback"></p>
+        <div class="quiz-next">
+          <button id="quiz-next-btn">Próxima</button>
+        </div>
+      </div>
+
+      <!-- TELA FINAL -->
+      <div id="quiz-final" class="quiz-final quiz-screen" style="display:none;">
+        <div class="quiz-final-heart">♥</div>
+        <p class="quiz-final-score" id="quiz-final-score">Você acertou X de 5</p>
+        <p class="quiz-final-msg">Não importa quantas você acertou — porque cada detalhe da nossa história, eu guardo com o maior cuidado no coração. E quero continuar criando muitos outros pra gente lembrar juntos, pro resto da vida.</p>
+      </div>
+
+    </div>
+  </section>
+
   <!-- RODAPÉ -->
   <footer>
     <div class="footer-heart">♥</div>
@@ -230,7 +400,8 @@
   <audio id="audio-el" src="musica/musica.mp3" preload="auto"></audio>
 
   <script>
-    document.getElementById('data-display').textContent = "13 de junho de 2026";
+    document.getElementById('data-display').textContent =
+      new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
 
     const audio    = document.getElementById('audio-el');
     const playIcon = document.getElementById('play-icon');
@@ -281,6 +452,109 @@
       const r = this.getBoundingClientRect();
       audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
     });
+
+    // ===== QUIZ "Quanto você me conhece?" =====
+    // Edite as perguntas, opções e a resposta correta (índice começando em 0) abaixo.
+    const quizPerguntas = [
+      {
+        pergunta: "Qual foi o nosso primeiro encontro?",
+        opcoes: ["No cinema", "Em um café", "Na Faculdade", "Na igreja"],
+        correta: 0
+      },
+      {
+        pergunta: "Qual é a minha comida favorita?",
+        opcoes: ["Pizza", "Churrasco", "Comida japonesa", "Macarrão"],
+        correta: 1
+      },
+      {
+        pergunta: "O que melhor fazemos juntos",
+        opcoes: ["Beijamos", "Conversamos", "Devocional", "Dormimos"],
+        correta: 2
+      },
+      {
+        pergunta: "O que eu mais admiro em você?",
+        opcoes: ["Seu sorriso", "Sua fé em Deus", "Seu jeito carinhoso", "Todas as opções acima"],
+        correta: 3
+      }
+    ];
+
+    let quizIndex = 0;
+    let quizAcertos = 0;
+    let quizRespondida = false;
+
+    const quizProgress = document.getElementById('quiz-progress');
+    const quizCounter  = document.getElementById('quiz-counter');
+    const quizQuestion = document.getElementById('quiz-question');
+    const quizOptions  = document.getElementById('quiz-options');
+    const quizFeedback = document.getElementById('quiz-feedback');
+    const quizNextBtn  = document.getElementById('quiz-next-btn');
+    const quizGame     = document.getElementById('quiz-game');
+    const quizFinal    = document.getElementById('quiz-final');
+    const quizFinalScore = document.getElementById('quiz-final-score');
+
+    function renderQuizPergunta() {
+      quizRespondida = false;
+      quizFeedback.textContent = '';
+      quizNextBtn.classList.remove('visible');
+
+      const total = quizPerguntas.length;
+      const atual = quizPerguntas[quizIndex];
+
+      quizProgress.style.width = `${((quizIndex) / total) * 100 + (100 / total)}%`;
+      quizCounter.textContent = `Pergunta ${quizIndex + 1} de ${total}`;
+      quizQuestion.textContent = atual.pergunta;
+
+      quizOptions.innerHTML = '';
+      atual.opcoes.forEach((opcao, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-option';
+        btn.textContent = opcao;
+        btn.addEventListener('click', () => responderQuiz(i, btn));
+        quizOptions.appendChild(btn);
+      });
+
+      quizNextBtn.textContent = (quizIndex === total - 1) ? 'Ver resultado' : 'Próxima';
+    }
+
+    function responderQuiz(escolhaIndex, btnEscolhido) {
+      if (quizRespondida) return;
+      quizRespondida = true;
+
+      const atual = quizPerguntas[quizIndex];
+      const botoes = quizOptions.querySelectorAll('.quiz-option');
+
+      botoes.forEach((b, i) => {
+        b.classList.add('disabled');
+        if (i === atual.correta) b.classList.add('correct');
+      });
+
+      if (escolhaIndex === atual.correta) {
+        quizAcertos++;
+        quizFeedback.textContent = 'Isso mesmo, meu amor! ♥';
+      } else {
+        btnEscolhido.classList.add('wrong');
+        quizFeedback.textContent = 'Quase! A resposta certa está em destaque.';
+      }
+
+      quizNextBtn.classList.add('visible');
+    }
+
+    quizNextBtn.addEventListener('click', () => {
+      if (quizIndex < quizPerguntas.length - 1) {
+        quizIndex++;
+        renderQuizPergunta();
+      } else {
+        finalizarQuiz();
+      }
+    });
+
+    function finalizarQuiz() {
+      quizGame.style.display = 'none';
+      quizFinal.style.display = 'block';
+      quizFinalScore.textContent = `Você acertou ${quizAcertos} de ${quizPerguntas.length}`;
+    }
+
+    renderQuizPergunta();
   </script>
 </body>
 </html>
