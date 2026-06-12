@@ -28,7 +28,26 @@
     body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--bg); color: var(--ink); line-height: 1.7; }
 
     /* HERO */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
+    .hero { 
+  min-height: 100vh; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
+  padding: 4rem 2rem; 
+  position: relative; 
+  overflow: hidden;
+  background: url('Fotos/fundo_hero.jpeg') no-repeat center center;
+  background-size: cover;
+}
+  .hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); /* escurece a foto pra dar contraste no texto */
+  pointer-events: none;
+  }
     .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 40%, #3d1a1e 0%, transparent 70%); pointer-events: none; }
     .hero-eyebrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--rose-md); margin-bottom: 1.5rem; position: relative; }
     .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 1.2rem; position: relative; }
@@ -282,26 +301,26 @@
   <section>
     <p class="section-label">Nossas fotos</p>
     <div class="photos-grid">
-      <div class="photo-slot"><img src="fotos/foto1.jpeg" alt="Nossa foto 1" /></div>
-      <div class="photo-slot"><img src="fotos/foto2.jpeg" alt="Nossa foto 2" /></div>
-      <div class="photo-slot"><img src="fotos/foto3.jpeg" alt="Nossa foto 3" /></div>
-      <div class="photo-slot"><img src="fotos/foto5.jpeg" alt="Nossa foto 5" /></div>
-        <div class="photo-slot"><img src="fotos/foto7.jpeg" alt="Nossa foto 7" /></div>
-        <div class="photo-slot"><img src="fotos/foto8.jpeg" alt="Nossa foto 8" /></div>
+      <div class="photo-slot"><img src="Fotos/foto1.jpeg" alt="Nossa foto 1" /></div>
+      <div class="photo-slot"><img src="Fotos/foto2.jpeg" alt="Nossa foto 2" /></div>
+      <div class="photo-slot"><img src="Fotos/foto3.jpeg" alt="Nossa foto 3" /></div>
+      <div class="photo-slot"><img src="Fotos/foto5.jpeg" alt="Nossa foto 5" /></div>
+        <div class="photo-slot"><img src="Fotos/foto7.jpeg" alt="Nossa foto 7" /></div>
+        <div class="photo-slot"><img src="Fotos/foto8.jpeg" alt="Nossa foto 8" /></div>
     </div>
   </section>
 
   <!-- FOTO 4 COM TEXTO -->
   <section>
     <p class="section-label">Um momento especial</p>
-    <div class="photo-slot" style="grid-column: span 3;"><img src="fotos/foto4.jpeg" alt="Nossa foto 4" /></div>
+    <div class="photo-slot" style="grid-column: span 3;"><img src="Fotos/Foto4.jpeg" alt="Nossa foto 4" /></div>
     <p class="msg-text" style="margin-top: 2rem; text-align: center;">Como é bom viver o evangelho com ela</p>
   </section>
 
   <!-- FOTO 6 COM VERSÍCULO -->
   <section>
     <p class="section-label">Um versículo para você</p>
-    <div class="photo-slot" style="grid-column: span 3;"><img src="fotos/foto6.jpeg" alt="Nossa foto 6" /></div>
+    <div class="photo-slot" style="grid-column: span 3;"><img src="Fotos/Foto6.jpeg" alt="Nossa foto 6" /></div>
     <div class="verse-block" style="margin-top: 2rem;">
       <p class="verse-ref">Provérbios 31:10–11</p>
       <div class="verse-text">Mulher de caráter, quem poderá encontrá-la? O seu valor ultrapassa de longe o dos rubis. O coração do marido está nela confiante, e não lhe faltará ganho.</div>
@@ -334,7 +353,7 @@
     <div class="player-wrap">
       <div class="player-top">
         <div class="cover-box">
-          <img src="fotos/capa.jpeg" alt="capa" onerror="this.parentElement.style.background='#2e2420'" />
+          <img src="Fotos/capa_album.jpg" alt="capa" onerror="this.parentElement.style.background='#2e2420'" />
         </div>
         <div class="song-info">
           <p class="song-name">Eu Sei Que Vou Te Amar</p>
@@ -366,6 +385,16 @@
   <section>
     <p class="section-label">Quanto você nos conhece?</p>
     <div class="quiz-wrap" id="quiz-wrap">
+
+      <!-- TELA INICIAL -->
+  <div id="quiz-start" class="quiz-final quiz-screen">
+    <div class="quiz-final-heart">♥</div>
+    <p class="quiz-final-score">Vamos jogar?</p>
+    <p class="quiz-final-msg">Preparei algumas perguntinhas sobre a gente. Vamos ver o quanto você me conhece?</p>
+    <div class="quiz-next" style="justify-content: center; margin-top: 1.8rem;">
+      <button id="quiz-start-btn" class="visible">Iniciar</button>
+    </div>
+  </div>
 
       <!-- TELA DO QUIZ -->
       <div id="quiz-game">
@@ -554,7 +583,11 @@
       quizFinalScore.textContent = `Você acertou ${quizAcertos} de ${quizPerguntas.length}`;
     }
 
-    renderQuizPergunta();
+    document.getElementById('quiz-start-btn').addEventListener('click', () => {
+  document.getElementById('quiz-start').style.display = 'none';
+  quizGame.style.display = 'block';
+  renderQuizPergunta();
+});
   </script>
 </body>
 </html>
