@@ -29,33 +29,96 @@
 
     /* HERO */
     .hero { 
-  min-height: 100vh; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  text-align: center; 
-  padding: 4rem 2rem; 
-  position: relative; 
-  overflow: hidden;
-  background: url('Fotos/fundo_hero.jpeg') no-repeat center center;
-  background-size: cover;
-}
-  .hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55); /* escurece a foto pra dar contraste no texto */
-  pointer-events: none;
-  }
-    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 40%, #3d1a1e 0%, transparent 70%); pointer-events: none; }
-    .hero-eyebrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--rose-md); margin-bottom: 1.5rem; position: relative; }
-    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 1.2rem; position: relative; }
-    .hero-title em { font-style: italic; color: var(--rose-md); }
-    .hero-sub { font-size: 14px; color: var(--ink-3); letter-spacing: .06em; margin-bottom: 2.5rem; position: relative; }
-    .hero-date { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: .1em; color: var(--rose-md); border: 1px solid var(--rose); padding: 8px 22px; border-radius: 40px; background: var(--bg-2); position: relative; }
-    .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 10px; letter-spacing: .15em; color: var(--ink-3); text-transform: uppercase; animation: bounce 2s infinite; }
-    .hero-scroll svg { width: 16px; height: 16px; stroke: var(--ink-3); fill: none; }
+      min-height: 100vh; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
+      text-align: center; 
+      padding: 4rem 2rem; 
+      position: relative; 
+      overflow: hidden;
+      background: url('fotos/fundo_hero.jpeg') no-repeat center center;
+      background-size: cover;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65); /* Aumentado para melhor legibilidade */
+      pointer-events: none;
+    }
+    .hero::before { 
+      content: ''; 
+      position: absolute; 
+      inset: 0; 
+      background: radial-gradient(ellipse 70% 50% at 50% 40%, rgba(61, 26, 30, 0.4) 0%, transparent 70%); 
+      pointer-events: none; 
+      z-index: 1;
+    }
+    .hero-eyebrow { 
+      font-size: 12px; 
+      letter-spacing: .3em; 
+      text-transform: uppercase; 
+      color: var(--rose-lt); /* Cor mais clara para contraste */
+      margin-bottom: 1.5rem; 
+      position: relative; 
+      z-index: 2;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .hero-title { 
+      font-family: 'Cormorant Garamond', serif; 
+      font-size: clamp(3.2rem, 9vw, 6.5rem); 
+      font-weight: 400; 
+      line-height: 1.1; 
+      color: var(--white); 
+      margin-bottom: 1.2rem; 
+      position: relative; 
+      z-index: 2;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .hero-title em { font-style: italic; color: var(--rose-lt); }
+    .hero-sub { 
+      font-size: 16px; 
+      color: var(--ink-2); 
+      letter-spacing: .08em; 
+      margin-bottom: 2.5rem; 
+      position: relative; 
+      z-index: 2;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .hero-date { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 10px; 
+      font-size: 13px; 
+      letter-spacing: .1em; 
+      color: var(--white); 
+      border: 1px solid var(--rose-md); 
+      padding: 10px 24px; 
+      border-radius: 40px; 
+      background: rgba(156, 47, 58, 0.2); 
+      backdrop-filter: blur(4px);
+      position: relative; 
+      z-index: 2;
+    }
+    .hero-scroll { 
+      position: absolute; 
+      bottom: 2rem; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 6px; 
+      font-size: 11px; 
+      letter-spacing: .15em; 
+      color: var(--ink-2); 
+      text-transform: uppercase; 
+      animation: bounce 2s infinite; 
+      z-index: 2;
+    }
+    .hero-scroll svg { width: 18px; height: 18px; stroke: var(--ink-2); fill: none; }
     @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
 
     /* SECTIONS */
@@ -116,6 +179,7 @@
       .msg-text { font-size: 17px; }
     }
     audio { display: none; }
+
     /* QUIZ */
     .quiz-wrap {
       background: var(--bg-2);
@@ -136,7 +200,7 @@
 
     .quiz-progress-fill {
       height: 100%;
-      width: 20%;
+      width: 0%;
       background: var(--rose);
       border-radius: 2px;
       transition: width .4s ease;
@@ -301,26 +365,26 @@
   <section>
     <p class="section-label">Nossas fotos</p>
     <div class="photos-grid">
-      <div class="photo-slot"><img src="Fotos/foto1.jpeg" alt="Nossa foto 1" /></div>
-      <div class="photo-slot"><img src="Fotos/foto2.jpeg" alt="Nossa foto 2" /></div>
-      <div class="photo-slot"><img src="Fotos/foto3.jpeg" alt="Nossa foto 3" /></div>
-      <div class="photo-slot"><img src="Fotos/foto5.jpeg" alt="Nossa foto 5" /></div>
-        <div class="photo-slot"><img src="Fotos/foto7.jpeg" alt="Nossa foto 7" /></div>
-        <div class="photo-slot"><img src="Fotos/foto8.jpeg" alt="Nossa foto 8" /></div>
+      <div class="photo-slot"><img src="fotos/foto1.jpeg" alt="Nossa foto 1" /></div>
+      <div class="photo-slot"><img src="fotos/foto2.jpeg" alt="Nossa foto 2" /></div>
+      <div class="photo-slot"><img src="fotos/foto3.jpeg" alt="Nossa foto 3" /></div>
+      <div class="photo-slot"><img src="fotos/foto5.jpeg" alt="Nossa foto 5" /></div>
+      <div class="photo-slot"><img src="fotos/foto7.jpeg" alt="Nossa foto 7" /></div>
+      <div class="photo-slot"><img src="fotos/foto8.jpeg" alt="Nossa foto 8" /></div>
     </div>
   </section>
 
   <!-- FOTO 4 COM TEXTO -->
   <section>
     <p class="section-label">Um momento especial</p>
-    <div class="photo-slot" style="grid-column: span 3;"><img src="Fotos/Foto4.jpeg" alt="Nossa foto 4" /></div>
+    <div class="photo-slot" style="grid-column: span 3;"><img src="fotos/foto4.jpeg" alt="Nossa foto 4" /></div>
     <p class="msg-text" style="margin-top: 2rem; text-align: center;">Como é bom viver o evangelho com ela</p>
   </section>
 
   <!-- FOTO 6 COM VERSÍCULO -->
   <section>
     <p class="section-label">Um versículo para você</p>
-    <div class="photo-slot" style="grid-column: span 3;"><img src="Fotos/Foto6.jpeg" alt="Nossa foto 6" /></div>
+    <div class="photo-slot" style="grid-column: span 3;"><img src="fotos/foto6.jpeg" alt="Nossa foto 6" /></div>
     <div class="verse-block" style="margin-top: 2rem;">
       <p class="verse-ref">Provérbios 31:10–11</p>
       <div class="verse-text">Mulher de caráter, quem poderá encontrá-la? O seu valor ultrapassa de longe o dos rubis. O coração do marido está nela confiante, e não lhe faltará ganho.</div>
@@ -339,12 +403,10 @@
   <!-- VERSÍCULOS -->
   <section>
     <p class="section-label">Palavra de Deus</p>
-
     <div class="verse-block">
       <p class="verse-ref">1 Coríntios 13:4–7</p>
       <div class="verse-text">O amor é paciente, é benigno; o amor não arde em ciúmes, não se ufana, não se ensoberbece, não se comporta com indecência, não procura os seus próprios interesses, não se irrita, não se ressente do mal; não se alegra com a injustiça, mas regozija-se com a verdade; tudo sofre, tudo crê, tudo espera, tudo suporta.</div>
     </div>
-
   </section>
 
   <!-- MÚSICA -->
@@ -353,11 +415,11 @@
     <div class="player-wrap">
       <div class="player-top">
         <div class="cover-box">
-          <img src="Fotos/capa_album.jpg" alt="capa" onerror="this.parentElement.style.background='#2e2420'" />
+          <img src="fotos/capa_album.jpg" alt="capa" onerror="this.parentElement.style.background='var(--bg-3)'" />
         </div>
         <div class="song-info">
-          <p class="song-name">Eu Sei Que Vou Te Amar</p>
-          <p class="song-by">Tom Jobim &amp; Vinícius de Moraes</p>
+          <p class="song-name">Tua Presença</p>
+          <p class="song-by">Paulo César Baruk</p>
         </div>
       </div>
 
@@ -387,17 +449,17 @@
     <div class="quiz-wrap" id="quiz-wrap">
 
       <!-- TELA INICIAL -->
-  <div id="quiz-start" class="quiz-final quiz-screen">
-    <div class="quiz-final-heart">♥</div>
-    <p class="quiz-final-score">Vamos jogar?</p>
-    <p class="quiz-final-msg">Preparei algumas perguntinhas sobre a gente. Vamos ver o quanto você me conhece?</p>
-    <div class="quiz-next" style="justify-content: center; margin-top: 1.8rem;">
-      <button id="quiz-start-btn" class="visible">Iniciar</button>
-    </div>
-  </div>
+      <div id="quiz-start" class="quiz-final quiz-screen">
+        <div class="quiz-final-heart">♥</div>
+        <p class="quiz-final-score">Vamos jogar?</p>
+        <p class="quiz-final-msg">Preparei algumas perguntinhas sobre a gente. Vamos ver o quanto você me conhece?</p>
+        <div class="quiz-next" style="justify-content: center; margin-top: 1.8rem;">
+          <button id="quiz-start-btn" class="visible">Iniciar Jogo</button>
+        </div>
+      </div>
 
       <!-- TELA DO QUIZ -->
-      <div id="quiz-game">
+      <div id="quiz-game" style="display: none;">
         <div class="quiz-progress-track">
           <div class="quiz-progress-fill" id="quiz-progress"></div>
         </div>
@@ -483,7 +545,6 @@
     });
 
     // ===== QUIZ "Quanto você me conhece?" =====
-    // Edite as perguntas, opções e a resposta correta (índice começando em 0) abaixo.
     const quizPerguntas = [
       {
         pergunta: "Qual foi o nosso primeiro encontro?",
@@ -520,6 +581,7 @@
     const quizGame     = document.getElementById('quiz-game');
     const quizFinal    = document.getElementById('quiz-final');
     const quizFinalScore = document.getElementById('quiz-final-score');
+    const quizStart    = document.getElementById('quiz-start');
 
     function renderQuizPergunta() {
       quizRespondida = false;
@@ -529,7 +591,7 @@
       const total = quizPerguntas.length;
       const atual = quizPerguntas[quizIndex];
 
-      quizProgress.style.width = `${((quizIndex) / total) * 100 + (100 / total)}%`;
+      quizProgress.style.width = `${((quizIndex) / total) * 100}%`;
       quizCounter.textContent = `Pergunta ${quizIndex + 1} de ${total}`;
       quizQuestion.textContent = atual.pergunta;
 
@@ -584,10 +646,10 @@
     }
 
     document.getElementById('quiz-start-btn').addEventListener('click', () => {
-  document.getElementById('quiz-start').style.display = 'none';
-  quizGame.style.display = 'block';
-  renderQuizPergunta();
-});
+      quizStart.style.display = 'none';
+      quizGame.style.display = 'block';
+      renderQuizPergunta();
+    });
   </script>
 </body>
 </html>
